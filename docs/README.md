@@ -10,18 +10,18 @@
 
 This model will allow users to:
 
-[ ] Start and stop the simulation
-[ ] View the simulation starting from a randomly populated grid
-[ ] Select and change model configurations (# of states, threshold value, colors for each state)
+- [ ] Start and stop the simulation
+- [ ] View the simulation starting from a randomly populated grid
+- [ ] Select and change model configurations (# of states, threshold value, colors for each state)
 
 The project will also have:
 
-[ ] Documentation
-[ ] A production README
+- [ ] Documentation
+- [ ] A production README
 
 ## Wireframes
 
-
+![Cellular Automata](./wireframes/CellularAutomata.png)
 
 ## Architecture & Technologies
 
@@ -58,5 +58,5 @@ The project will also have:
 * Implement bonus features if time allows
 
 ## Bonus Features
-[ ] Allow user to manually paint starting configurations
-[ ] Incorporate other automata simulations like Conway's Game of Life, or Langton's Ant
+- [ ] Allow user to manually paint starting configurations
+- [ ] Incorporate other automata simulations like Conway's Game of Life, or Langton's Ant
