@@ -1,5 +1,5 @@
 module.exports = {
-  entry: './lib/cellular-automata.js',
+  entry: './lib/cellular-automata.jsx',
   output: {
     path: './',
     filename: 'bundle.js',
