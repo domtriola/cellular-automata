@@ -1,11 +1,11 @@
 import React from 'react';
 import Header from './header/header.jsx';
-import SimulationContainer from './simulation/simulation_container';
+import Simulation from './simulation/simulation.jsx';
 
 const App = () => (
   <div className="app-container">
     <Header />
-    <SimulationContainer />
+    <Simulation />
   </div>
 );
 
