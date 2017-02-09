@@ -19,10 +19,13 @@ class Settings extends React.Component {
 
       let val = e.target.value;
       let colors = this.state.colors;
-      
+
       if (field === 'n') {
-        if (this.colors.length < val) {
-          colors.push(Math.floor(Math.random() * 256));
+        if (colors.length < val) {
+          let newColor = [Math.floor(Math.random() * 256),
+                          Math.floor(Math.random() * 256),
+                          Math.floor(Math.random() * 256)];
+          colors.push(newColor);
           this.setState({ colors });
         } else {
           colors.pop();
