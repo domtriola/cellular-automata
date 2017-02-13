@@ -21,13 +21,14 @@ class Settings extends React.Component {
       let colors = this.state.colors;
 
       if (field === 'n') {
-        if (colors.length < val) {
+        while (colors.length < val) {
           let newColor = [Math.floor(Math.random() * 256),
                           Math.floor(Math.random() * 256),
                           Math.floor(Math.random() * 256)];
           colors.push(newColor);
           this.setState({ colors });
-        } else {
+        }
+        while (colors.length > val) {
           colors.pop();
           this.setState({ colors });
         }
@@ -40,12 +41,12 @@ class Settings extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="settings">
         <p>{this.state.n}</p>
-        <input type="range" min="1" max="10" value={this.state.n}
+        <input type="range" min="1" max="8" value={this.state.n}
           onChange={this.update('n')}></input>
         <p>{this.state.t}</p>
-        <input type="range" min="1" max="10" value={this.state.t}
+        <input type="range" min="1" max="4" value={this.state.t}
           onChange={this.update('t')}></input>
       </div>
     );
