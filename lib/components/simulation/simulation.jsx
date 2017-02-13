@@ -1,8 +1,7 @@
 import React from 'react';
+import Util from '../util/util';
 import Grid from './grid';
 import Settings from './controls/settings.jsx';
-
-const randColor = () => Math.floor(Math.random() * 256);
 
 class Simulation extends React.Component {
   constructor(props) {
@@ -12,9 +11,9 @@ class Simulation extends React.Component {
       n: 3,
       t: 3,
       colors: [
-        [randColor(), randColor(), randColor()],
-        [randColor(), randColor(), randColor()],
-        [randColor(), randColor(), randColor()]
+        Util.randomColor(),
+        Util.randomColor(),
+        Util.randomColor()
       ]
     };
 
@@ -47,18 +46,18 @@ class Simulation extends React.Component {
 
   render() {
     return (
-      <div>
-        <Settings
-          n={this.state.n}
-          t={this.state.t}
-          colors={this.state.colors}
-          updateGrid={this.updateGrid} />
+      <div className="simulation">
         <div className="canvas">
           <canvas
             ref="canvas"
             width="400"
             height="400"></canvas>
         </div>
+        <Settings
+          n={this.state.n}
+          t={this.state.t}
+          colors={this.state.colors}
+          updateGrid={this.updateGrid} />
       </div>
     );
   }

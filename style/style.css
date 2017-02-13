@@ -10,3 +10,16 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Baloo Thambi', sans-serif;
 }
+
+/* Simulation
+**************/
+
+.simulation {
+  text-align: center;
+}
+
+.settings, .canvas {
+  vertical-align: top;
+  display: inline-block;
+  width: 50%;
+}

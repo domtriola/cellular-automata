@@ -1,4 +1,6 @@
 import React from 'react';
+import Util from '../../util/util';
+import ColorPicker from './color_picker.jsx';
 
 class Settings extends React.Component {
   constructor(props) {
@@ -11,6 +13,7 @@ class Settings extends React.Component {
     };
 
     this.update = this.update.bind(this);
+    this.updateColor = this.updateColor.bind(this);
   }
 
   update(field) {
@@ -22,9 +25,7 @@ class Settings extends React.Component {
 
       if (field === 'n') {
         while (colors.length < val) {
-          let newColor = [Math.floor(Math.random() * 256),
-                          Math.floor(Math.random() * 256),
-                          Math.floor(Math.random() * 256)];
+          let newColor = Util.randomColor();
           colors.push(newColor);
           this.setState({ colors });
         }
@@ -39,15 +40,33 @@ class Settings extends React.Component {
     };
   }
 
+  updateColor(i) {
+    return (e) => {
+      e.preventDefault();
+
+      let color = Util.hexToRGB(e.target.value);
+      this.state.colors[i] = color;
+      this.setState({ colors: this.state.colors });
+    };
+  }
+
   render() {
     return (
       <div className="settings">
+        <p># of States</p>
         <p>{this.state.n}</p>
         <input type="range" min="1" max="8" value={this.state.n}
           onChange={this.update('n')}></input>
+        <p>Threshold</p>
         <p>{this.state.t}</p>
         <input type="range" min="1" max="4" value={this.state.t}
           onChange={this.update('t')}></input>
+        {this.state.colors.map((color, i) => (
+          <ColorPicker
+            key={i}
+            color={Util.rgbToHex(color)}
+            update={this.updateColor(i)} />
+        ))}
       </div>
     );
   }
