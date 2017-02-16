@@ -1,6 +1,7 @@
 import React from 'react';
 import Util from '../../util/util';
 import ColorPicker from './color_picker.jsx';
+import Neighborhoods from './neighborhoods.jsx';
 
 class Settings extends React.Component {
   constructor(props) {
@@ -9,7 +10,8 @@ class Settings extends React.Component {
     this.state = {
       n: this.props.n,
       t: this.props.t,
-      colors: this.props.colors
+      colors: this.props.colors,
+      dirs: this.props.dirs
     };
 
     this.update = this.update.bind(this);
@@ -67,6 +69,9 @@ class Settings extends React.Component {
             color={Util.rgbToHex(color)}
             update={this.updateColor(i)} />
         ))}
+        <Neighborhoods
+          dirs={this.state.dirs}
+          toggleDir={this.props.toggleDir} />
       </div>
     );
   }

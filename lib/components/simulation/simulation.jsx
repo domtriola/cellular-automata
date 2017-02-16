@@ -14,24 +14,55 @@ class Simulation extends React.Component {
         Util.randomColor(),
         Util.randomColor(),
         Util.randomColor()
-      ]
+      ],
+      dirs: {
+        n:  [0, 1, true],
+        ne: [1, 1, false],
+        e:  [1, 0, false],
+        se: [1, -1, false],
+        s:  [0, -1, false],
+        sw: [-1, -1, false],
+        w:  [-1, 0, true],
+        nw: [-1, 1, true]
+      }
     };
 
     this.updateGrid = this.updateGrid.bind(this);
+    this.toggleDir = this.toggleDir.bind(this);
   }
 
   componentDidMount() {
     this.canvas = this.refs.canvas;
     this.ctx = this.canvas.getContext('2d');
-    this.grid = new Grid(100, 100,
-      this.ctx, this.state.n, this.state.t, this.state.colors);
+    this.grid = new Grid(
+      100, 100, this.ctx, this.state.n,
+      this.state.t, this.state.colors,
+      this.state.dirs
+    );
     this.draw();
   }
 
   updateGrid(settings, colors) {
-    this.setState({ [settings[0]]: settings[1], colors: colors }, () => {
-      this.grid = new Grid(100, 100,
-        this.ctx, this.state.n, this.state.t, this.state.colors);
+    this.setState({
+      [settings[0]]: settings[1],
+      colors: colors
+    }, () => {
+      this.grid = new Grid(
+        100, 100, this.ctx, this.state.n,
+        this.state.t, this.state.colors,
+        this.state.dirs
+      );
+    });
+  }
+
+  toggleDir(dir) {
+    this.state.dirs[dir][2] = !this.state.dirs[dir][2];
+    this.setState({ dirs: this.state.dirs }, () => {
+      this.grid = new Grid(
+        100, 100, this.ctx, this.state.n,
+        this.state.t, this.state.colors,
+        this.state.dirs
+      );
     });
   }
 
@@ -57,7 +88,9 @@ class Simulation extends React.Component {
           n={this.state.n}
           t={this.state.t}
           colors={this.state.colors}
-          updateGrid={this.updateGrid} />
+          dirs={this.state.dirs}
+          updateGrid={this.updateGrid}
+          toggleDir={this.toggleDir} />
       </div>
     );
   }
