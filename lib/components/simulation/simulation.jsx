@@ -17,11 +17,11 @@ class Simulation extends React.Component {
       ],
       dirs: {
         n:  [0, 1, true],
-        ne: [1, 1, false],
-        e:  [1, 0, false],
-        se: [1, -1, false],
-        s:  [0, -1, false],
-        sw: [-1, -1, false],
+        ne: [1, 1, true],
+        e:  [1, 0, true],
+        se: [1, -1, true],
+        s:  [0, -1, true],
+        sw: [-1, -1, true],
         w:  [-1, 0, true],
         nw: [-1, 1, true]
       }
@@ -29,6 +29,7 @@ class Simulation extends React.Component {
 
     this.updateGrid = this.updateGrid.bind(this);
     this.toggleDir = this.toggleDir.bind(this);
+    this.resetGrid = this.resetGrid.bind(this);
   }
 
   componentDidMount() {
@@ -46,24 +47,22 @@ class Simulation extends React.Component {
     this.setState({
       [settings[0]]: settings[1],
       colors: colors
-    }, () => {
-      this.grid = new Grid(
-        100, 100, this.ctx, this.state.n,
-        this.state.t, this.state.colors,
-        this.state.dirs
-      );
-    });
+    }, this.resetGrid());
   }
 
   toggleDir(dir) {
     this.state.dirs[dir][2] = !this.state.dirs[dir][2];
-    this.setState({ dirs: this.state.dirs }, () => {
+    this.setState({ dirs: this.state.dirs }, this.resetGrid());
+  }
+
+  resetGrid() {
+    return () => {
       this.grid = new Grid(
         100, 100, this.ctx, this.state.n,
         this.state.t, this.state.colors,
         this.state.dirs
       );
-    });
+    };
   }
 
   draw() {
