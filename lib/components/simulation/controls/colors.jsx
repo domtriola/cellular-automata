@@ -24,6 +24,7 @@ class Colors extends React.Component {
   render() {
     return (
       <div className="colors">
+        <h4>Colors</h4>
         {this.state.colors.map((color, i) => (
           <ColorPicker
             key={i}

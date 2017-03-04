@@ -9,7 +9,7 @@ const rows = [
 
 const Neighborhoods = ({ dirs, toggleDir }) => (
   <div className="neighborhoods">
-    <p>Neighborhoods</p>
+    <h4>Vulnerability</h4>
     {rows.map((row, i) => (
       <div key={i} className="row">
         {row.map((dir, j) => {

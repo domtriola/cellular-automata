@@ -39,6 +39,19 @@ canvas {
 /* Controls
 **************/
 
+.settings h4 {
+  margin-bottom: 10px;
+}
+
+.settings p {
+  margin: 0;
+}
+
+.settings .species,
+.settings .resilience {
+  margin-bottom: 40px;
+}
+
 .neighborhoods .row .cell,
 .neighborhoods .row .dead-cell {
   width: 20px;

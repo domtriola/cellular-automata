@@ -1,5 +1,7 @@
 import React from 'react';
 import Util from '../../util/util';
+import Species from './species.jsx';
+import Resilience from './resilience.jsx';
 import ColorPicker from './color_picker.jsx';
 import Neighborhoods from './neighborhoods.jsx';
 
@@ -44,14 +46,8 @@ class Settings extends React.Component {
   render() {
     return (
       <div className="settings">
-        <p># of States</p>
-        <p>{this.state.n}</p>
-        <input type="range" min="1" max="8" value={this.state.n}
-          onChange={this.update('n')}></input>
-        <p>Threshold</p>
-        <p>{this.state.t}</p>
-        <input type="range" min="1" max="4" value={this.state.t}
-          onChange={this.update('t')}></input>
+        <Species n={this.state.n} update={this.update('n')} />
+        <Resilience t={this.state.t} update={this.update('t')} />
         <Neighborhoods
           dirs={this.state.dirs}
           toggleDir={this.props.toggleDir} />
