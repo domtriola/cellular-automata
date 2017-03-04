@@ -14,15 +14,16 @@ const Neighborhoods = ({ dirs, toggleDir }) => (
       <div key={i} className="row">
         {row.map((dir, j) => {
           let cellClass = classNames({
-            'cell': true,
-            'active': dir !== null && dirs[dir][2]
+            'cell': dir !== null,
+            'active': dir !== null && dirs[dir][2],
+            'dead-cell': dir === null
           });
 
           return (
             <div
               key={j}
               className={cellClass}
-              onClick={() => toggleDir(dir)}></div>
+              onClick={dir === null ? null : () => toggleDir(dir)}></div>
           );
         })}
       </div>
