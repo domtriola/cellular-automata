@@ -18,9 +18,16 @@ h1, h2, h3, h4, h5, h6 {
   text-align: center;
 }
 
-.settings, .canvas {
+.settings, .colors, .canvas {
   vertical-align: top;
   display: inline-block;
+}
+
+.settings, .colors {
+  width: 25%;
+}
+
+.canvas {
   width: 50%;
 }
 

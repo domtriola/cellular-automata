@@ -2,6 +2,7 @@ import React from 'react';
 import Util from '../util/util';
 import Grid from './grid';
 import Settings from './controls/settings.jsx';
+import Colors from './controls/colors.jsx';
 
 class Simulation extends React.Component {
   constructor(props) {
@@ -71,18 +72,12 @@ class Simulation extends React.Component {
     this.grid.evolve();
     this.grid.draw();
 
-    requestAnimationFrame(() => this.draw(this.canvas, this.ctx, this.grid));
+    requestAnimationFrame(() => this.draw());
   }
 
   render() {
     return (
       <div className="simulation">
-        <div className="canvas">
-          <canvas
-            ref="canvas"
-            width="400"
-            height="400"></canvas>
-        </div>
         <Settings
           n={this.state.n}
           t={this.state.t}
@@ -90,6 +85,13 @@ class Simulation extends React.Component {
           dirs={this.state.dirs}
           updateGrid={this.updateGrid}
           toggleDir={this.toggleDir} />
+        <div className="canvas">
+          <canvas
+            ref="canvas"
+            width="400"
+            height="400"></canvas>
+        </div>
+        <Colors colors={this.state.colors} />
       </div>
     );
   }

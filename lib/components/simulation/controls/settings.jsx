@@ -15,7 +15,6 @@ class Settings extends React.Component {
     };
 
     this.update = this.update.bind(this);
-    this.updateColor = this.updateColor.bind(this);
   }
 
   update(field) {
@@ -42,16 +41,6 @@ class Settings extends React.Component {
     };
   }
 
-  updateColor(i) {
-    return (e) => {
-      e.preventDefault();
-
-      let color = Util.hexToRGB(e.target.value);
-      this.state.colors[i] = color;
-      this.setState({ colors: this.state.colors });
-    };
-  }
-
   render() {
     return (
       <div className="settings">
@@ -63,12 +52,6 @@ class Settings extends React.Component {
         <p>{this.state.t}</p>
         <input type="range" min="1" max="4" value={this.state.t}
           onChange={this.update('t')}></input>
-        {this.state.colors.map((color, i) => (
-          <ColorPicker
-            key={i}
-            color={Util.rgbToHex(color)}
-            update={this.updateColor(i)} />
-        ))}
         <Neighborhoods
           dirs={this.state.dirs}
           toggleDir={this.props.toggleDir} />
