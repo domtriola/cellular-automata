@@ -16,6 +16,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .simulation {
   text-align: center;
+  margin-top: 60px;
 }
 
 .settings, .colors, .canvas {
@@ -29,6 +30,10 @@ h1, h2, h3, h4, h5, h6 {
 
 .canvas {
   width: 50%;
+}
+
+canvas {
+  box-shadow: -12px 12px 14px #888888;
 }
 
 /* Controls
@@ -52,4 +57,19 @@ h1, h2, h3, h4, h5, h6 {
 
 .neighborhoods .row {
   height: 20px;
+}
+
+/* Colors
+**************/
+
+.colors input {
+  width: 100px;
+}
+
+/* Footer
+**************/
+
+.footer {
+  text-align: center;
+  margin-top: 40px;
 }
