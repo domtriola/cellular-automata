@@ -17,14 +17,14 @@ class Simulation extends React.Component {
         Util.randomColor()
       ],
       dirs: {
-        n:  [0, 1, true],
-        ne: [1, 1, true],
+        n:  [0, -1, true],
+        ne: [1, -1, true],
         e:  [1, 0, true],
-        se: [1, -1, true],
-        s:  [0, -1, false],
-        sw: [-1, -1, true],
+        se: [1, 1, true],
+        s:  [0, 1, false],
+        sw: [-1, 1, true],
         w:  [-1, 0, false],
-        nw: [-1, 1, true]
+        nw: [-1, -1, true]
       }
     };
 
