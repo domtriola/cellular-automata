@@ -81,6 +81,25 @@ canvas {
   height: 20px;
 }
 
+.info {
+  display: inline;
+  position: relative;
+}
+
+.modal {
+  display: none;
+  position: absolute;
+  left: 0;
+  background-color: #fff;
+  padding: 15px;
+  font-weight: normal;
+  width: 200px;
+}
+
+.info:hover .modal {
+  display: block;
+}
+
 /* Colors
 **************/
 

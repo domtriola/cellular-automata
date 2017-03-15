@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
+import Info from './info-modal.jsx';
 
 const rows = [
   ['nw', 'n', 'ne'],
@@ -7,9 +8,11 @@ const rows = [
   ['sw', 's', 'se']
 ];
 
+const modalBody = "Change the directions that prey cells may be eaten from.";
+
 const Neighborhoods = ({ dirs, toggleDir }) => (
   <div className="neighborhoods">
-    <h4>Vulnerability</h4>
+    <h4>Vulnerability <Info body={modalBody} /></h4>
     {rows.map((row, i) => (
       <div key={i} className="row">
         {row.map((dir, j) => {
