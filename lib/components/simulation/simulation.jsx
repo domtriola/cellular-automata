@@ -33,6 +33,7 @@ class Simulation extends React.Component {
     this.updateGrid = this.updateGrid.bind(this);
     this.toggleDir = this.toggleDir.bind(this);
     this.resetGrid = this.resetGrid.bind(this);
+    // this.randomColors = this.randomColors.bind(this);
     this.disableWarning = this.disableWarning.bind(this);
   }
 
@@ -53,6 +54,16 @@ class Simulation extends React.Component {
       colors: colors
     }, this.resetGrid());
   }
+
+  // randomColors() {
+  //   console.log("randomColors");
+  //   let colors = [
+  //     Util.randomColor(),
+  //     Util.randomColor(),
+  //     Util.randomColor()
+  //   ];
+  //   this.setState({ colors: colors });
+  // }
 
   toggleDir(dir) {
     this.state.dirs[dir][2] = !this.state.dirs[dir][2];

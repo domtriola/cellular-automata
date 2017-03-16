@@ -21,6 +21,13 @@ class Colors extends React.Component {
     };
   }
 
+  randomColors() {
+    for (let i = 0; i < 3; i++)
+      this.state.colors[i] = Util.randomColor();
+
+    this.setState({ colors: this.state.colors });
+  }
+
   render() {
     return (
       <div className="colors">
@@ -31,6 +38,7 @@ class Colors extends React.Component {
             color={Util.rgbToHex(color)}
             update={this.updateColor(i)} />
         ))}
+        <button onClick={() => this.randomColors()}>Randomize</button>
       </div>
     );
   }
