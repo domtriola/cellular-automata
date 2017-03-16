@@ -10,8 +10,7 @@ const Warning = ({ disable }) => (
     <p>
       To allow free creative exploration I have not limited the range of
       any of the parameters. As a result there is a plethora of
-      interesting patterns to discover, some of which have a strobe-like
-      effect. Please use with caution.
+      interesting patterns to discover. Please use with caution.
     </p>
     <button onClick={() => disable()}>I'm Ready</button>
   </div>
