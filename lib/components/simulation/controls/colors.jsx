@@ -22,7 +22,7 @@ class Colors extends React.Component {
   }
 
   randomColors() {
-    for (let i = 0; i < 3; i++)
+    for (let i = 0; i < this.state.colors.length; i++)
       this.state.colors[i] = Util.randomColor();
 
     this.setState({ colors: this.state.colors });
