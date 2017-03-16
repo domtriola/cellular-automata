@@ -151,6 +151,7 @@ canvas {
   left: 50%;
   margin-left: -50px;
   opacity: 0;
+  -webkit-transition: 0.7s;
   transition: 0.7s;
 }
 .info-modal.active {
