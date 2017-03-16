@@ -8,7 +8,7 @@ const rows = [
   ['sw', 's', 'se']
 ];
 
-const modalBody = "Change the directions that prey cells may be eaten from.";
+const modalBody = "Changes the directions that prey cells may be eaten from.";
 
 const Neighborhoods = ({ dirs, toggleDir }) => (
   <div className="neighborhoods">

@@ -41,6 +41,7 @@ canvas {
 
 .settings h4 {
   margin-bottom: 10px;
+  display: inline-block;
 }
 
 .settings p {
@@ -82,12 +83,26 @@ canvas {
 }
 
 .info {
-  display: inline;
   position: relative;
+  top: -4px;
+  left: 2px;
+  border: 1px solid #333;
+  border-radius: 50%;
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+}
+.info:hover {
+  cursor: help;
+}
+
+.info span {
+  position: relative;
+  top: -4px;
 }
 
 .modal {
-  display: none;
+  visibility: hidden;
   position: absolute;
   left: 0;
   background-color: #fff;
@@ -97,7 +112,7 @@ canvas {
 }
 
 .info:hover .modal {
-  display: block;
+  visibility: visible;
 }
 
 /* Colors
@@ -111,6 +126,48 @@ canvas {
 **************/
 
 .footer {
+  position: relative;
   text-align: center;
   margin-top: 40px;
+}
+
+.footer h4 {
+  cursor: pointer;
+  background-color: #ccc;
+  display: inline-block;
+  padding: 20px;
+  margin: 0;
+}
+
+.info-modal {
+  box-sizing: border-box;
+  visibility: visible;
+  position: absolute;
+  background-color: #fff;
+  padding: 50px;
+  width: 100px;
+  height: 0;
+  top: -50px;
+  left: 50%;
+  margin-left: -50px;
+  opacity: 0;
+  transition: 0.7s;
+}
+.info-modal.active {
+  visibility: visible;
+  font-weight: 700;
+  width: 500px;
+  height: 500px;
+  top: -500px;
+  left: 50%;
+  margin-left: -250px;
+  opacity: 0.95;
+}
+
+.modal-exit {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
 }

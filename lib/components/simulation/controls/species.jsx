@@ -1,7 +1,7 @@
 import React from 'react';
 import Info from './info-modal.jsx';
 
-const modalBody = "Change the amount of different types of cells.";
+const modalBody = "Changes the amount of different species (represented by colors).";
 
 const Species = ({ n, update }) => (
   <div className="species">
