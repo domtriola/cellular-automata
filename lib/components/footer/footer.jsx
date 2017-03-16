@@ -9,7 +9,7 @@ const info = (
       a simple set of rules. In this simulation every species (a cell
       with a distinct state — in this case color) can eat exactly one
       other species, and every species can be eaten by exactly one other
-      species. When a cell is eaten is becomes the species (color) of the
+      species. When a cell is eaten it becomes the species (color) of the
       cell that ate it.
     </p>
     <p>

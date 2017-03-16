@@ -3,6 +3,7 @@ import Util from '../util/util';
 import Grid from './grid';
 import Settings from './controls/settings.jsx';
 import Colors from './controls/colors.jsx';
+import Warning from './warning.jsx';
 
 class Simulation extends React.Component {
   constructor(props) {
@@ -25,12 +26,14 @@ class Simulation extends React.Component {
         sw: [-1, 1, true],
         w:  [-1, 0, false],
         nw: [-1, -1, true]
-      }
+      },
+      warning: true
     };
 
     this.updateGrid = this.updateGrid.bind(this);
     this.toggleDir = this.toggleDir.bind(this);
     this.resetGrid = this.resetGrid.bind(this);
+    this.disableWarning = this.disableWarning.bind(this);
   }
 
   componentDidMount() {
@@ -75,6 +78,10 @@ class Simulation extends React.Component {
     requestAnimationFrame(() => this.draw());
   }
 
+  disableWarning() {
+    this.setState({ warning: false });
+  }
+
   render() {
     return (
       <div className="simulation">
@@ -92,6 +99,7 @@ class Simulation extends React.Component {
             height="400"></canvas>
         </div>
         <Colors colors={this.state.colors} />
+        {this.state.warning ? <Warning disable={this.disableWarning}/> : null}
       </div>
     );
   }
