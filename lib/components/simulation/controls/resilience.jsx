@@ -1,7 +1,7 @@
 import React from 'react';
 import Info from './info-modal.jsx';
 
-const modalBody = "Changes the amount of neighboring predator cells it takes to eat a prey cell.";
+const modalBody = "The amount of neighboring predator cells it takes to eat a prey cell";
 
 const Resilience = ({ t, update }) => (
   <div className="resilience">
