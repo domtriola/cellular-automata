@@ -10,30 +10,21 @@ class Simulation extends React.Component {
     super(props);
 
     this.state = {
-      n: 3,
-      t: 3,
+      n: this.props.n,
+      t: this.props.t,
       colors: [
         Util.randomColor(),
         Util.randomColor(),
         Util.randomColor()
       ],
-      dirs: {
-        n:  [0, -1, true],
-        ne: [1, -1, true],
-        e:  [1, 0, true],
-        se: [1, 1, true],
-        s:  [0, 1, false],
-        sw: [-1, 1, true],
-        w:  [-1, 0, false],
-        nw: [-1, -1, true]
-      },
+      dirs: this.props.dirs,
       warning: true
     };
 
     this.updateGrid = this.updateGrid.bind(this);
+    this.updateSetting = this.updateSetting.bind(this);
     this.toggleDir = this.toggleDir.bind(this);
     this.resetGrid = this.resetGrid.bind(this);
-    // this.randomColors = this.randomColors.bind(this);
     this.disableWarning = this.disableWarning.bind(this);
   }
 
@@ -55,15 +46,41 @@ class Simulation extends React.Component {
     }, this.resetGrid());
   }
 
-  // randomColors() {
-  //   console.log("randomColors");
-  //   let colors = [
-  //     Util.randomColor(),
-  //     Util.randomColor(),
-  //     Util.randomColor()
-  //   ];
-  //   this.setState({ colors: colors });
-  // }
+  updateSetting(field) {
+    return (e) => {
+      e.preventDefault();
+
+      let val = e.target.value;
+      let colors = this.state.colors;
+
+      if (field === 'n') {
+        while (colors.length < val) {
+          let newColor = Util.randomColor();
+          colors.push(newColor);
+          this.setState({ colors });
+        }
+        while (colors.length > val) {
+          colors.pop();
+          this.setState({ colors });
+        }
+      }
+
+      this.setState({ [field]: val }, this.updateUrl);
+      this.updateGrid([field, val], colors);
+    };
+  }
+
+  updateUrl() {
+    const url = new URL(window.location.href);
+    url.searchParams.set('n', this.state.n);
+    url.searchParams.set('t', this.state.t);
+    url.searchParams.set('dirs', encodeURI(JSON.stringify(this.state.dirs)));
+    const urlState = {
+      title: 'Cellular Automata',
+      url: url.href,
+    };
+    history.pushState(urlState, urlState.title, urlState.url);
+  }
 
   toggleDir(dir) {
     this.state.dirs[dir][2] = !this.state.dirs[dir][2];
@@ -102,6 +119,7 @@ class Simulation extends React.Component {
           colors={this.state.colors}
           dirs={this.state.dirs}
           updateGrid={this.updateGrid}
+          updateSetting={this.updateSetting}
           toggleDir={this.toggleDir} />
         <div className="canvas">
           <canvas
